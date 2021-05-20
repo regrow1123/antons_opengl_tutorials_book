@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31313.79
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "00_hello_triangle", "00_hello_triangle\00_hello_triangle.vcxproj", "{8B1935C1-651B-4CFD-994E-553359B854EC}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "01_extended_init", "01_extended_init\01_extended_init.vcxproj", "{1F62EECD-DF76-4D67-9E9C-E8DC6D332515}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8B1935C1-651B-4CFD-994E-553359B854EC}.Debug|x64.ActiveCfg = Debug|x64
+		{8B1935C1-651B-4CFD-994E-553359B854EC}.Debug|x64.Build.0 = Debug|x64
+		{1F62EECD-DF76-4D67-9E9C-E8DC6D332515}.Debug|x64.ActiveCfg = Debug|x64
+		{1F62EECD-DF76-4D67-9E9C-E8DC6D332515}.Debug|x64.Build.0 = Debug|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6F56DDF8-5FDF-4E35-B8A0-FE061966C936}
+	EndGlobalSection
+EndGlobal
