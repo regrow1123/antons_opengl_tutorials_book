@@ -18,26 +18,28 @@ def restart_gl_log():
     file.close()
     return True
 
-def gl_log(message):
+def gl_log(*message):
     file = open(GL_LOG_FILE, 'a')
     if not file:
         print(f'ERROR: could not open GL_LOG_FILE {GL_LOG_FILE} file for appending', file=sys.stderr)
         return False
 
-    file.write(message)
+    for m in message:
+        file.write(m)
     return True
 
-def gl_log_err(message):
+def gl_log_err(*message):
     file = open(GL_LOG_FILE, 'a')
     if not file:
         print(f'ERROR: could not open GL_LOG_FILE {GL_LOG_FILE} file for appending', file=sys.stderr)
         return False
     
-    file.write(message)
-    print(message, file=sys.stderr)
+    for m in message: 
+        file.write(m)
+    print(*message, file=sys.stderr)
 
 def glfw_error_callback(error, description):
-    gl_log_err(f'GLFW ERROR: code {error} msg: {description}')
+    gl_log_err('GLFW ERROR: code', error, ' msg: ', description)
 
 g_gl_width, g_gl_height = 640, 480
 
@@ -77,13 +79,13 @@ def log_gl_params():
     gl_log('GL Context Params:\n')
     for i in range(10):
         v = glGetIntegerv(params[i])
-        gl_log(f'{names[i]} {v}\n')
+        gl_log(names[i], str(v), '\n')
     
     v = glGetIntegerv(params[10])
-    gl_log(f'{names[10]} {v[0]} {v[1]}\n')
+    gl_log(names[10], str(v[0]), str(v[1]), '\n')
 
     s = glGetBooleanv(params[11])
-    gl_log(f'{names[11]} {s}\n')
+    gl_log(names[11], str(s), '\n')
     gl_log('-----------------------------\n')
 
 def _update_fps_counter(window, previous_seconds, frame_count):
@@ -119,7 +121,7 @@ def main():
         '''
 
     restart_gl_log()
-    gl_log(f'starting GLFW\n{glfw.get_version_string()}\n')
+    gl_log('starting GLFW\n', str(glfw.get_version_string(), 'utf-8'), '\n')
     glfw.set_error_callback(glfw_error_callback)
     if not glfw.init():
         print('ERROR: could not start GLFW3', file=sys.stderr)
@@ -143,7 +145,7 @@ def main():
     version = glGetString(GL_VERSION)
     print('Renderer: ', renderer)
     print('OpenGL version supported ', version)
-    gl_log(f'renderer: {renderer}\nversion: {version}\n')
+    gl_log('renderer: ', str(renderer, 'utf-8'), '\nversion: ', str(version, 'utf-8'), '\n')
     log_gl_params()
 
     glEnable(GL_DEPTH_TEST)
