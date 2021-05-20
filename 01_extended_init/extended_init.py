@@ -26,6 +26,7 @@ def gl_log(*message):
 
     for m in message:
         file.write(m)
+    file.close()
     return True
 
 def gl_log_err(*message):
@@ -37,6 +38,8 @@ def gl_log_err(*message):
     for m in message: 
         file.write(m)
     print(*message, file=sys.stderr)
+    file.close()
+    return True
 
 def glfw_error_callback(error, description):
     gl_log_err('GLFW ERROR: code', error, ' msg: ', description)
